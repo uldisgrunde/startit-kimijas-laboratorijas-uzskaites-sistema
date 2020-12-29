@@ -6,25 +6,25 @@ async function raditNoliktavasDatus(tipsAtlase)
 
   if(tipsAtlase==undefined)
   {
-    let vielasNoServera = await fetch('https://pytonc.eu.pythonanywhere.com/api/v1/vielas');
+    let vielasNoServera = await fetch('/api/v1/vielas');
     jsonVielas = await vielasNoServera.json();
     jsonVielas = pievienotIerakstuParKategoriju(jsonVielas, 'viela');
     //
-    let inventarsNoServera = await fetch('https://pytonc.eu.pythonanywhere.com/api/v1/inventars');
+    let inventarsNoServera = await fetch('/api/v1/inventars');
     jsonInventars = await inventarsNoServera.json();
     jsonInventars = pievienotIerakstuParKategoriju(jsonInventars, 'inventars');
   }
   else if(tipsAtlase=='viela')
   {
     //jsonVielas = await iegutDatusNoApi('https://pytonc.eu.pythonanywhere.com/api/v1/vielas');
-    let vielasNoServera = await fetch('https://pytonc.eu.pythonanywhere.com/api/v1/vielas');
+    let vielasNoServera = await fetch('/api/v1/vielas');
     jsonVielas = await vielasNoServera.json();
     jsonVielas = pievienotIerakstuParKategoriju(jsonVielas, 'viela');
   }
   else if(tipsAtlase=='aprikojums')
   {
     //jsonInventars = await iegutDatusNoApi('https://pytonc.eu.pythonanywhere.com/api/v1/inventars');
-    let inventarsNoServera = await fetch('https://pytonc.eu.pythonanywhere.com/api/v1/inventars');
+    let inventarsNoServera = await fetch('/api/v1/inventars');
     jsonInventars = await inventarsNoServera.json();
     jsonInventars = pievienotIerakstuParKategoriju(jsonInventars, 'inventars');
   }
@@ -40,43 +40,25 @@ async function raditNoliktavasDatus(tipsAtlase)
   //datiNoliktava['0'] - pirmais ieraksts
   //datiNoliktava['0']['Nosaukums'] - pirmā ieraksta nosaukums
   
-  for (i = 0; i < datiNoliktava.length; i++)
-  {
-
+  for (i = 0; i < datiNoliktava.length; i++)  {
       kategorija = datiNoliktava[i]['kategorija'];
-
-
-      tabula.innerHTML = tabula.innerHTML+`
-      <tr id="`+kategorija+datiNoliktava[i]['id']+`">
-      <td> `+datiNoliktava[i]['id']+` </td>
-      <td> `+datiNoliktava[i]['nosaukums']+` </td>
-      <td> `+datiNoliktava[i]['tips']+` </td>
-      <td> `+datiNoliktava[i]['apakstips']+` </td>
-      <td> `+datiNoliktava[i]['skaits']+` </td>
-      <td> `+datiNoliktava[i]['daudzums']+` </td>
-      <td> `+datiNoliktava[i]['komentari']+` </td>
-      <td onclick="dzestVieluAprikojumu(`+datiNoliktava[i]['id']+`,'`+kategorija+`')"> ❌ </td>
+      tabula.innerHTML += `
+      <tr id="${kategorija+datiNoliktava[i]['id']}">
+      <td>${datiNoliktava[i]['id']}</td>
+      <td>${datiNoliktava[i]['nosaukums']}</td>
+      <td>${datiNoliktava[i]['tips']}</td>
+      <td>${datiNoliktava[i]['apakstips']}</td>
+      <td>${datiNoliktava[i]['skaits']}</td>
+      <td>${datiNoliktava[i]['daudzums']}</td>
+      td>${datiNoliktava[i]['komentari']} </td>
+      <td onclick="dzestVieluAprikojumu('${datiNoliktava[i]['id']}','${kategorija}')"> ❌ </td>
       </tr>`;
-      
-
-
+ 
   }//loop beigas
-  
+  }//beidzas raditNoliktavasDatus(dati)
 
 
-}//beidzas raditNoliktavasDatus(dati)
-
-
-
-
-
-
-
-
-
-async function pievienotVieluAprikojumu()
-{
-
+async function pievienotVieluAprikojumu(){
 let requestBodyJson = {
               "apakstips": document.querySelector('#apakstips').value,
               "daudzums": parseInt(document.querySelector('#daudzums').value),
@@ -107,12 +89,6 @@ document.querySelector('#atbilde').innerHTML=JSON.stringify(atbilde);
   
 }//beigas pievienotVieluAprikojumu();
 
-
-
-
-
-
-
 function pievienotIerakstuParKategoriju(json, tips)
 {
   for (i = 0; i < json.length; i++)
@@ -123,19 +99,12 @@ function pievienotIerakstuParKategoriju(json, tips)
   return json;
 }
 
-
-
-
-
-
-
 async function dzestVieluAprikojumu(id,kategorija)
 {
-
   
   if (confirm('Dzēst?')) 
   {
-    let request = await fetch('https://pytonc.eu.pythonanywhere.com/api/v1/'+kategorija+'/'+id+'/dzest',
+    let request = await fetch('/api/v1/'+kategorija+'/'+id+'/dzest',
                 {
                 method:"POST",
                 headers: {
