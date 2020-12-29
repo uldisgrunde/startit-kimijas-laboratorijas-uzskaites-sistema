@@ -1,0 +1,21 @@
+<html>
+    <body>
+
+<script>
+
+async function raditNoliktavasDatus()
+{
+    let datiNoServera = await fetch('https://pytonc.eu.pythonanywhere.com/api/v1/inventars'); 
+    let datiJson = await datiNoServera.json(); 
+
+    console.log(datiJson);
+
+}
+
+raditNoliktavasDatus();
+
+
+</script>
+
+    </body>
+</html>
