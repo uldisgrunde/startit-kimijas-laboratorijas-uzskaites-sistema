@@ -1,6 +1,6 @@
 from flask import Flask, json, jsonify, render_template, request
 import dati
-
+import sqlite3
 
 app = Flask(__name__)
 
@@ -47,6 +47,31 @@ def vielas():
     
     # pārveidojam par string pirms atgriežam
     return jsonify(dati)
+
+
+@app.route('/api/v2/inventars', methods=['GET'])
+def v2inventars():
+    conn = sqlite3.connect('Dati.db')
+    c = conn.cursor()
+    conn.commit()
+    #c.execute("SELECT * FROM Users")
+    c.execute("SELECT ID, NOSAUKUMS, TIPS, APAKSTIPS, '' AS DAUDZUMS, SKAITS, KOMENTARI FROM Inventars")
+    data = c.fetchall()
+    jsonData = ''
+    column_names = ['id','nosaukums','tips','apakstips','daudzums','skaits', 'komentari']
+    for row in data:
+      info = dict(zip(column_names, row))
+      jsonData = jsonData + json.dumps(info) + ','
+    jsonData = jsonData[:-1]
+    jsonData = '[' + jsonData + ']'
+
+    #print(c.fetchall())
+
+
+    c.close()
+    conn.close()    
+    #return '0'
+    return jsonData
 
 
 @app.route('/api/v1/inventars', methods=['GET'])
