@@ -1,0 +1,54 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead th {
+  color: var(--cyan);
+  font-weight: 400;
+  font-size: 13px;
+  background: var(--neutral-main);
+}
+
+th, td {
+  padding: 0 10px;
+  height: 48px;
+}
+
+td { height: 56px; }
+
+tbody tr:not(:last-of-type) { border-bottom: 5px solid var(--neutral-50); }
+
+.content table .button {
+  border: none;
+  background: none;
+  width: auto;
+  padding: 0 10px;
+  margin: 0 !important;
+  font-size: 15px;
+}
+
+.content table .button:hover {
+  color: var(--neutral-0);
+  background: var(--neutral-400);
+}
+
+.content table .button.button_error { color: var(--red-400); }
+.content table .button.button_error:hover {
+  color: var(--neutral-0);
+  background: var(--red-400);
+}
+
+.table_filter {
+  margin-bottom: 20px;
+}
+
+.table_filter_label {
+  margin-right: 6px;
+  color: var(--neutral-400);
+}
+
+.table_filter .button.active {
+  background: var(--blue);
+  color: var(--neutral-0);
+}

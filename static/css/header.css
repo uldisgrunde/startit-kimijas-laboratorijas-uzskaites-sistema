@@ -1,0 +1,40 @@
+header {
+  background: var(--neutral-50);
+  border-bottom: 1px solid var(--neutral-100);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+}
+
+header .content_wrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: space-between;
+}
+
+header .logo {
+  height: 40px;
+  display: flex;
+  align-items: center;
+}
+
+header .logo span {
+  margin-left: 8px;
+  font-size: 22px;
+  color: var(--blue);
+}
+
+header .logo span:hover { color: var(--blue-dark); }
+
+header nav a {
+  color: var(--neutral-600);
+  margin-left: 10px;
+}
+
+header nav a:hover,
+header nav a.active:hover { color: var(--blue); }
+
+header nav a.active { color: var(--neutral-main); }

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/normalize.css">
+    <link rel="stylesheet" href="/static/css/main.css">
+    <link rel="stylesheet" href="/static/css/buttons.css">
+    <link rel="stylesheet" href="/static/css/table.css">
+    <link rel="stylesheet" href="/static/css/header.css">
+
+    <title>Start(IT)</title>
+  </head>
+  <body>
+    <header>
+      <div class="content_wrapper">
+        <a href="/publiski" class="logo">
+          <img src="/static/images/front_page_icon.svg">
+          <span>ĶLUS</span>
+        </a>
+        <nav>
+          <a href="/uzskaite" class="active">Uzskaite</a>
+          <!-- <a href="iepirkumi.html">Iepirkumi</a> -->
+          <!-- <a href="rikojumi.html">Rīkojumi</a>
+          <a href="lietotaji.html">Lietotāji</a> -->
+          <a href="/">Iziet</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="content">
+      <div class="content_wrapper">
+
+        <a class="button" href="/uzskaite">&lt; Atpakaļ uz sarakstu</a>
+
+
+        <form>
+
+        Tips <select id="kategorija">
+                <option value="viela">viela</option>
+                <option value="inventars">inventars</option>
+                </select>
+        
+        Nosaukums <input id="nosaukums" />
+        
+        Tips <select id="tips">
+            <option value="reaģents">reaģents</option>
+            <option value="svari">svari</option>
+            <option value="sildītājs">sildītājs</option>
+            <option value="trauks">trauks</option>
+            <option value="cits">cits</option>
+            </select>
+        
+        Apakštips <select id="apakstips">
+            <option value="sāls">sāls</option>
+            <option value="hidroksīds">hidroksīds</option>
+            <option value="skābe">skābe</option>
+            <option value="mehāniskie svari">mehāniskie svari</option>
+            <option value="elektroniskie svari">elektroniskie svari</option>
+            <option value="plītiņa">plītiņa</option>
+            <option value="trauki">trauki</option>
+            <option value="stikls">stikls</option>
+            <option value="cits">cits</option>
+            </select>
+        
+        Mērvienibas <input id="mervienibas" />
+
+        Svars/daudzums <input type="number" id="daudzums" />
+
+        Skaits <input type="number" id="skaits" />
+        
+        Komentāri <textarea id="komentari"></textarea>
+
+        <a class="button" onclick="pievienotVieluAprikojumu()">Saglabāt</a>
+        </form>
+
+        
+        <hr />
+        Atbilde no servera: <span id="atbilde"></span>
+                
+
+      </div><!--beidzas class=content_wrapper-->
+    </div><!--beidzas class=content-->
+
+    <script src='/static/js/main.js'></script>
+    <script>
+    </script>
+  </body>
+</html>
